@@ -88,6 +88,28 @@ RSpec.describe AuditGroup do
       end
     end
 
+    describe '#dry_run' do
+      it 'saves a list of audits, rolls back the transaction, then returns the audits' do
+        # 
+        rails = class_double('Rails').as_stubbed_const
+        expect(rails).to receive(:gem_version).and_return('123')
+
+        request = described_class.new('123')
+        rolled_back = false
+
+        expect_any_instance_of(AuditGroup).to receive(:audits).and_return(%w[audit1 audit2])
+
+        expect(ActiveRecord::Base).to receive(:transaction).and_wrap_original do |_m, *_args, &block|
+          block.call
+        rescue ActiveRecord::Rollback
+          rolled_back = true
+        end
+
+        expect(request.dry_run).to contain_exactly('audit1', 'audit2')
+        expect(rolled_back).to be(true)
+      end
+    end
+
     describe '#set_request_uuid' do
       it 'delegates to class' do
         request = described_class.new('123')

@@ -14,4 +14,4 @@ task :push do
   sh "gem push omg-audit-group-#{AuditGroup::VERSION}.gem"
 end
 
-task :publish => :push
+task publish: :push

@@ -2,18 +2,17 @@
 
 source 'https://rubygems.org'
 
-gem 'base64', '< 0.2'
-gem 'drb', '< 2.2'
-
 gemspec
 
-group :development do
-  gem 'bundler-audit'
-  gem 'pry'
-  gem 'pry-byebug'
-  gem 'pry-stack_explorer'
-  gem 'rake'
-  gem 'rspec', '~> 3.0'
-  gem 'rubocop', require: false
-  gem 'rubocop-rspec'
-end
+# group :development do
+#   gem 'bundler-audit'
+#   gem 'bundler-graph'
+#   gem 'pry'
+#   gem 'pry-byebug'
+#   gem 'pry-stack_explorer'
+#   gem 'rake', '~> 13.1'
+#   gem 'rspec', '~> 3.0'
+#   gem 'rubocop', require: false
+#   gem 'rubocop-rspec'
+#   gem 'ruby-graphviz'
+# end

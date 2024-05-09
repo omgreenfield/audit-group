@@ -4,7 +4,7 @@ require 'active_support/all'
 require 'audited'
 
 class AuditGroup
-  VERSION = '0.1.2'
+  VERSION = '0.1.3'
 
   attr_reader :block, :request_uuid
 
@@ -33,6 +33,12 @@ class AuditGroup
 
       new.request(&block)
     end
+
+    def dry_run(&block)
+      raise ArgumentError, 'No block given and no active group' unless block_given?
+
+      new.dry_run(&block)
+    end
   end
 
   def initialize(request_uuid = SecureRandom.uuid)
@@ -48,6 +54,18 @@ class AuditGroup
     self
   ensure
     unset_request_uuid
+  end
+
+  def dry_run(&block)
+    ActiveRecord::Base.transaction do
+      request(&block)
+
+      @dry_run_audits = audits.to_a
+
+      raise ActiveRecord::Rollback
+    end
+
+    @dry_run_audits
   end
 
   def set_request_uuid
