@@ -2,11 +2,6 @@
 
 Group ActiveRecord operations together by assigning all of their audits the same `request_uuid`.
 
-## TODO
-
-- [ ] Add `rails` as dependency instead of `active_support`
-- [ ] Add `dry_run` method
-
 ## Requirements
 
 - [Audited](https://github.com/collectiveidea/audited) gem
