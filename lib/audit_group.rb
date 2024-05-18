@@ -4,7 +4,7 @@ require 'active_support/all'
 require 'audited'
 
 class AuditGroup
-  VERSION = '0.1.2'
+  VERSION = '0.1.3'
 
   attr_reader :block, :request_uuid
 

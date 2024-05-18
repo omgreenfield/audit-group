@@ -15,19 +15,14 @@ Gem::Specification.new do |spec|
 
   spec.homepage = 'https://github.com/omgreenfield/omg-util/tree/main/audit_group'
   spec.license = 'MIT'
-  spec.required_ruby_version = '>= 2.7.0'
+  spec.required_ruby_version = '>= 2.3.0'
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['rubygems_mfa_required'] = 'true'
 
-  spec.files = Dir.chdir(__dir__) do
-    `git ls-files -z`.split("\x0").reject do |f|
-      (File.expand_path(f) == __FILE__) ||
-        f.start_with?(*%w[spec/.git .github Gemfile])
-    end
-  end
+  spec.files = ['lib/audit_group.rb']
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'activesupport', '>= 6.0', '< 8.0'
+  spec.add_dependency 'activesupport', '>= 5.2', '< 7.2'
   spec.add_dependency 'audited', '>= 4.9', '< 6.0'
 end

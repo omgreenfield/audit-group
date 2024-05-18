@@ -14,6 +14,4 @@ group :development do
   gem 'pry-stack_explorer'
   gem 'rake'
   gem 'rspec', '~> 3.0'
-  gem 'rubocop', require: false
-  gem 'rubocop-rspec'
 end
