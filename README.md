@@ -54,38 +54,43 @@ AuditGroup.request_uuid
 
 # View the audits from the last request
 AuditGroup.audits
+
+# Save the AuditGroup instance for later
+audit_group = AuditGroup.current
 ```
 
 ### Saving Request object for later use
 
 ```ruby
 # Group operations under the same request_uuid
-request = AuditGroup.request { perform_some_operations }
+audit_group = AuditGroup.request { perform_some_operations }
 
 # View the last request_uuid
-request.request_uuid
+audit_group.request_uuid
 
 # View the audits from the last request
-request.audits
+audit_group.audits
 ```
 
-### Instantiating a group
-
-You can also create separate `AuditGroup::Request` objects to reuse.
+### Passing in a request_uuid
 
 ```ruby
-group = AuditGroup.new
-group.request { perform_some_operations }
-...
-group.request { perform_more_operations }
-group.audits
+AuditGroup.request(request_uuid: some_record.audits.last.request_uuid)
+```
+
+### Performing a dry run
+
+View how records would change without committing the transaction
+
+```ruby
+audit_group = AuditGroup.request(dry_run: true) { perform_some_operations }
+audit_group.audits
 ```
 
 ## Running tests
 
 ```ruby
-rspec
-
-# or
-bundle exec rspec
+bundle exec rspec # option 1
+rake spec         # option 2
+rspec             # option 3
 ```

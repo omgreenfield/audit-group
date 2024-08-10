@@ -7,7 +7,7 @@ task :spec do
 end
 
 task :build do
-  sh 'gem build audit_group.gemspec'
+  sh "gem build audit_group.gemspec"
 end
 
 task :push do

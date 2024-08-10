@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
                      'the same request_uuid to them, and be able to easily view ' \
                      'and undo them'
 
-  spec.homepage = 'https://github.com/omgreenfield/omg-util/tree/main/audit_group'
+  spec.homepage = 'https://github.com/omgreenfield/audit-group'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 2.3.0'
 
@@ -23,6 +23,6 @@ Gem::Specification.new do |spec|
   spec.files = ['lib/audit_group.rb']
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'activesupport', '>= 5.2', '< 7.2'
+  spec.add_dependency 'activerecord', '>= 5.2', '< 7.2'
   spec.add_dependency 'audited', '>= 4.9', '< 6.0'
 end
