@@ -1,0 +1,15 @@
+---
+version: 0.1.5
+name: omg-audit-group
+authors:
+- Matthew Greenfield
+email:
+- mattgreenfield1@gmail.com
+summary: Groups transactions from the `audited` gem into a single request_uuid
+description: "Create, update, and delete records within a block, assign \nthe same
+  request_uuid to them, and be able to easily view \nand undo them\n"
+homepage: https://github.com/omgreenfield/audit-group
+license: MIT
+required_ruby_version: ">= 2.3.0"
+homepage_uri: https://github.com/omgreenfield/audit-group
+rubygems_mfa_required: 'true'

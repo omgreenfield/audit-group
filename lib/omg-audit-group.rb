@@ -3,8 +3,6 @@
 require 'audited'
 
 class AuditGroup
-  VERSION = '0.1.4'
-
   class LockError < StandardError
     def initialize
       super('Request is locked and cannot be run again. If you want to add operations to an existing request_uuid, create a new instance')
